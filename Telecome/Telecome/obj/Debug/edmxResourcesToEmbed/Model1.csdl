@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TelecomeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abonent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id_installed_equipment" Type="Int32" Nullable="false" />
+    <Property Name="Id_phone" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Installed_equipment" Relationship="Self.FK_Abonent_Installed_equipment" FromRole="Abonent" ToRole="Installed_equipment" />
+    <NavigationProperty Name="Phone" Relationship="Self.FK_Abonent_Phone" FromRole="Abonent" ToRole="Phone" />
+  </EntityType>
+  <EntityType Name="Adress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_number" Type="Int32" Nullable="false" />
+    <Property Name="Entrance" Type="Int32" />
+    <NavigationProperty Name="Installation_location" Relationship="Self.FK_Installation_location_Adress" FromRole="Adress" ToRole="Installation_location" />
+  </EntityType>
+  <EntityType Name="Coordinates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lon" Type="Int32" Nullable="false" />
+    <Property Name="Lat" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Installation_location" Relationship="Self.FK_Installation_location_Coordinates" FromRole="Coordinates" ToRole="Installation_location" />
+  </EntityType>
+  <EntityType Name="Equpment_type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Installed_equipment" Relationship="Self.FK_Installed_equipment_Equpment_type" FromRole="Equpment_type" ToRole="Installed_equipment" />
+  </EntityType>
+  <EntityType Name="Identification_data">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Serial_number" Type="Int32" Nullable="false" />
+    <Property Name="Inventory_number" Type="Int32" Nullable="false" />
+    <Property Name="Ip_adress" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mac_adress" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Installed_equipment" Relationship="Self.FK_Identification_data_Installed_equipment" FromRole="Identification_data" ToRole="Installed_equipment" />
+  </EntityType>
+  <EntityType Name="Installation_location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_adress" Type="Int32" Nullable="false" />
+    <Property Name="Connection_point" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id_coordinates" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Adress" Relationship="Self.FK_Installation_location_Adress" FromRole="Installation_location" ToRole="Adress" />
+    <NavigationProperty Name="Coordinates" Relationship="Self.FK_Installation_location_Coordinates" FromRole="Installation_location" ToRole="Coordinates" />
+    <NavigationProperty Name="Installed_equipment" Relationship="Self.FK_Installed_equipment_Installation_location" FromRole="Installation_location" ToRole="Installed_equipment" />
+  </EntityType>
+  <EntityType Name="Installed_equipment">
+    <Key>
+      <PropertyRef Name="Serial_number" />
+    </Key>
+    <Property Name="Serial_number" Type="Int32" Nullable="false" />
+    <Property Name="Id_type" Type="Int32" Nullable="false" />
+    <Property Name="Id_port" Type="Int32" Nullable="false" />
+    <Property Name="Id_location" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Abonent" Relationship="Self.FK_Abonent_Installed_equipment" FromRole="Installed_equipment" ToRole="Abonent" />
+    <NavigationProperty Name="Equpment_type" Relationship="Self.FK_Installed_equipment_Equpment_type" FromRole="Installed_equipment" ToRole="Equpment_type" />
+    <NavigationProperty Name="Identification_data" Relationship="Self.FK_Identification_data_Installed_equipment" FromRole="Installed_equipment" ToRole="Identification_data" />
+    <NavigationProperty Name="Installation_location" Relationship="Self.FK_Installed_equipment_Installation_location" FromRole="Installed_equipment" ToRole="Installation_location" />
+    <NavigationProperty Name="Port" Relationship="Self.FK_Installed_equipment_Port" FromRole="Installed_equipment" ToRole="Port" />
+  </EntityType>
+  <EntityType Name="Phone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phone1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Abonent" Relationship="Self.FK_Abonent_Phone" FromRole="Phone" ToRole="Abonent" />
+  </EntityType>
+  <EntityType Name="Port">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_port_type" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Installed_equipment" Relationship="Self.FK_Installed_equipment_Port" FromRole="Port" ToRole="Installed_equipment" />
+    <NavigationProperty Name="Port_type" Relationship="Self.FK_Port_Port_type" FromRole="Port" ToRole="Port_type" />
+  </EntityType>
+  <EntityType Name="Port_type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Port" Relationship="Self.FK_Port_Port_type" FromRole="Port_type" ToRole="Port" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id_role" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Abonent_Installed_equipment">
+    <End Role="Installed_equipment" Type="Self.Installed_equipment" Multiplicity="1" />
+    <End Role="Abonent" Type="Self.Abonent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Installed_equipment">
+        <PropertyRef Name="Serial_number" />
+      </Principal>
+      <Dependent Role="Abonent">
+        <PropertyRef Name="Id_installed_equipment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Abonent_Phone">
+    <End Role="Phone" Type="Self.Phone" Multiplicity="1" />
+    <End Role="Abonent" Type="Self.Abonent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Abonent">
+        <PropertyRef Name="Id_phone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installation_location_Adress">
+    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Installation_location" Type="Self.Installation_location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Installation_location">
+        <PropertyRef Name="Id_adress" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installation_location_Coordinates">
+    <End Role="Coordinates" Type="Self.Coordinates" Multiplicity="1" />
+    <End Role="Installation_location" Type="Self.Installation_location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coordinates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Installation_location">
+        <PropertyRef Name="Id_coordinates" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installed_equipment_Equpment_type">
+    <End Role="Equpment_type" Type="Self.Equpment_type" Multiplicity="1" />
+    <End Role="Installed_equipment" Type="Self.Installed_equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equpment_type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Installed_equipment">
+        <PropertyRef Name="Id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Identification_data_Installed_equipment">
+    <End Role="Installed_equipment" Type="Self.Installed_equipment" Multiplicity="1" />
+    <End Role="Identification_data" Type="Self.Identification_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Installed_equipment">
+        <PropertyRef Name="Serial_number" />
+      </Principal>
+      <Dependent Role="Identification_data">
+        <PropertyRef Name="Serial_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installed_equipment_Installation_location">
+    <End Role="Installation_location" Type="Self.Installation_location" Multiplicity="1" />
+    <End Role="Installed_equipment" Type="Self.Installed_equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Installation_location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Installed_equipment">
+        <PropertyRef Name="Id_location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installed_equipment_Port">
+    <End Role="Port" Type="Self.Port" Multiplicity="1" />
+    <End Role="Installed_equipment" Type="Self.Installed_equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Port">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Installed_equipment">
+        <PropertyRef Name="Id_port" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Port_Port_type">
+    <End Role="Port_type" Type="Self.Port_type" Multiplicity="1" />
+    <End Role="Port" Type="Self.Port" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Port_type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Port">
+        <PropertyRef Name="Id_port_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TelecomeDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abonent" EntityType="Self.Abonent" />
+    <EntitySet Name="Adress" EntityType="Self.Adress" />
+    <EntitySet Name="Coordinates" EntityType="Self.Coordinates" />
+    <EntitySet Name="Equpment_type" EntityType="Self.Equpment_type" />
+    <EntitySet Name="Identification_data" EntityType="Self.Identification_data" />
+    <EntitySet Name="Installation_location" EntityType="Self.Installation_location" />
+    <EntitySet Name="Installed_equipment" EntityType="Self.Installed_equipment" />
+    <EntitySet Name="Phone" EntityType="Self.Phone" />
+    <EntitySet Name="Port" EntityType="Self.Port" />
+    <EntitySet Name="Port_type" EntityType="Self.Port_type" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Abonent_Installed_equipment" Association="Self.FK_Abonent_Installed_equipment">
+      <End Role="Installed_equipment" EntitySet="Installed_equipment" />
+      <End Role="Abonent" EntitySet="Abonent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Abonent_Phone" Association="Self.FK_Abonent_Phone">
+      <End Role="Phone" EntitySet="Phone" />
+      <End Role="Abonent" EntitySet="Abonent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installation_location_Adress" Association="Self.FK_Installation_location_Adress">
+      <End Role="Adress" EntitySet="Adress" />
+      <End Role="Installation_location" EntitySet="Installation_location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installation_location_Coordinates" Association="Self.FK_Installation_location_Coordinates">
+      <End Role="Coordinates" EntitySet="Coordinates" />
+      <End Role="Installation_location" EntitySet="Installation_location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installed_equipment_Equpment_type" Association="Self.FK_Installed_equipment_Equpment_type">
+      <End Role="Equpment_type" EntitySet="Equpment_type" />
+      <End Role="Installed_equipment" EntitySet="Installed_equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Identification_data_Installed_equipment" Association="Self.FK_Identification_data_Installed_equipment">
+      <End Role="Installed_equipment" EntitySet="Installed_equipment" />
+      <End Role="Identification_data" EntitySet="Identification_data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installed_equipment_Installation_location" Association="Self.FK_Installed_equipment_Installation_location">
+      <End Role="Installation_location" EntitySet="Installation_location" />
+      <End Role="Installed_equipment" EntitySet="Installed_equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installed_equipment_Port" Association="Self.FK_Installed_equipment_Port">
+      <End Role="Port" EntitySet="Port" />
+      <End Role="Installed_equipment" EntitySet="Installed_equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Port_Port_type" Association="Self.FK_Port_Port_type">
+      <End Role="Port_type" EntitySet="Port_type" />
+      <End Role="Port" EntitySet="Port" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

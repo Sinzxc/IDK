@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="45890042bb0848d28209167999cb7a65" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="TelecomeDBModel.Abonent" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Adress" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Coordinates" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Equpment_type" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Identification_data" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Installation_location" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Installed_equipment" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Phone" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Port" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Port_type" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.Role" Width="1.5" PointX="9.875" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomeDBModel.User" Width="1.5" PointX="11.875" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Abonent_Installed_equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Abonent_Phone" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Installation_location_Adress" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Installation_location_Coordinates" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Installed_equipment_Equpment_type" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Identification_data_Installed_equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Installed_equipment_Installation_location" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Installed_equipment_Port" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_Port_Port_type" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomeDBModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
