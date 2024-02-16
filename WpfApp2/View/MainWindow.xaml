@@ -12,7 +12,6 @@
     </Window.DataContext>
     <Grid>
         <StackPanel>
-            <Button Content="Хуй" Command=""></Button>
             <ListView ItemsSource="{Binding Products}" MouseDown="ListView_MouseDown">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -24,6 +23,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackPanel Orientation="Horizontal">
+                <Image Width="200" Source="nn.gif"></Image>
+                <Image Width="200" Source="gg.jpg"/>
+                <Image Width="200" Source="qq.jpg"/>
+                <Image Width="200" Source="цц.jpg"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

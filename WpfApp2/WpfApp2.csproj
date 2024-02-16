@@ -98,6 +98,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\nn.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\gg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\qq.jpg" />
+    <Resource Include="View\цц.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
