@@ -12,23 +12,23 @@
     </Window.DataContext>
     <Grid>
         <StackPanel>
-            <ListView ItemsSource="{Binding Products}" MouseDown="ListView_MouseDown">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Order by name" Command="{Binding OrderByName}"></Button>
+                <TextBox x:Name="tb1" Width="200" ></TextBox>
+                <Button Content="Поиск" Command="{Binding Search}"></Button>
+                <Button Content="Вывести всё" Command="{Binding GetDefault}"></Button>
+            </StackPanel>
+            <ListView ItemsSource="{Binding Users}" MouseDown="ListView_MouseDown">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel MouseDown="StackPanel_MouseDown" Width="768">
                             <TextBlock Text="{Binding Name}" MouseDown="TextBlock_MouseDown"></TextBlock>
-                            <TextBlock Text="{Binding Description}"></TextBlock>
-                            <TextBlock Text="{Binding Category}"></TextBlock>
+                            <TextBlock Text="{Binding Username}"></TextBlock>
+                            <TextBlock Text="{Binding Password}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Orientation="Horizontal">
-                <Image Width="200" Source="nn.gif"></Image>
-                <Image Width="200" Source="gg.jpg"/>
-                <Image Width="200" Source="qq.jpg"/>
-                <Image Width="200" Source="цц.jpg"/>
-            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

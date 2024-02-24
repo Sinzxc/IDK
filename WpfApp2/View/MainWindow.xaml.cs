@@ -39,5 +39,9 @@ namespace WpfApp2.View
         {
             MessageBox.Show(((sender as StackPanel)?.Children[0] as TextBlock)?.Text);
         }
+
+        public string getSearchText() { 
+            return tb1.Text.ToString();
+        }
     }
 }

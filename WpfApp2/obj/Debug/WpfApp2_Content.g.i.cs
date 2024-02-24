@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/qq.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/%d1%86%d1%86.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]
 
 
