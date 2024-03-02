@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApp3.View.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.View"
+        mc:Ignorable="d"
+        Title="Window2" Height="450" Width="800"
+        MinHeight="350"
+        MinWidth="500"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="300"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition  />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBox x:Name="NameTb"
+                     Grid.Row="0"
+                     Height="20"
+                     Grid.Column="1"></TextBox>
+            <TextBox x:Name="UsernameTB"
+                     Grid.Row="1"
+                     Height="20"
+                     Grid.Column="1"></TextBox>
+            <TextBox x:Name="PassTB"
+                     Grid.Row="2"
+                     Height="20"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+    </Grid>
+</Window>
